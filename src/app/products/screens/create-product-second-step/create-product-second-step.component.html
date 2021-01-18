@@ -1,0 +1,21 @@
+<form (submit)="handleSubmit()">
+  <h4>Precio del producto</h4>
+  <input [(ngModel)]="productPrice" name="productPrice" type="number" />
+  <h4>Precio en oferta del producto</h4>
+  <input
+    [(ngModel)]="productDiscountedPrice"
+    name="productDiscountedPrice"
+    type="number"
+  />
+  <h4>¿Está en oferta?</h4>
+  <input [(ngModel)]="isOffer" name="isOffer" type="checkbox" />
+  <div>
+    <button
+      type="submit"
+      ng-really-message="¿Quiere que se publique"
+      ng-really-click="create()"
+    >
+      Finalizar
+    </button>
+  </div>
+</form>

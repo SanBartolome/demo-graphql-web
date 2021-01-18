@@ -1,0 +1,15 @@
+<form (submit)="handleSubmit()">
+  <h4>Nombre del producto</h4>
+  <input [(ngModel)]="productName" name="productName" type="text" />
+  <h4>Descripción del producto</h4>
+  <input
+    [(ngModel)]="productDescription"
+    name="productDescription"
+    type="text"
+  />
+  <h4>Palabras clave</h4>
+  <input [(ngModel)]="productKeywords" name="productKeywords" type="text" />
+  <div>
+    <button type="submit">Siguiente</button>
+  </div>
+</form>

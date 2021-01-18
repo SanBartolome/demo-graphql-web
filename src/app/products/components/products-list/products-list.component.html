@@ -1,0 +1,49 @@
+<ng-container *ngIf="productsResult$ | async as productsResult">
+  <ng-container *ngIf="!productsResult.loading; else loadingRef">
+    <table>
+      <tr>
+        <th style="width: 90px"><label>Nombre</label></th>
+        <th style="width: 90px"><label>Precio</label></th>
+        <th style="width: 90px"><label>Precio oferta</label></th>
+        <th style="width: 90px"><label>Publicado</label></th>
+        <th style="width: 90px"><label>En oferta</label></th>
+        <td style="width: 90px"></td>
+        <td style="width: 90px"></td>
+      </tr>
+      <tr *ngFor="let product of productsResult.data.productos">
+        <td>
+          <span>{{ product.nombre }}</span>
+        </td>
+        <td>
+          <span>{{ product.precio }}</span>
+        </td>
+        <td>
+          <span>{{ product.precioDescuento }}</span>
+        </td>
+        <td>
+          <span (click)="handlePublishedClick(product.id, !product.publicado)">
+            <input type="checkbox" [checked]="product.publicado" />
+          </span>
+        </td>
+        <td>
+          <span (click)="handleOfferClick(product.id, !product.esOferta)">
+            <input type="checkbox" [checked]="product.esOferta" />
+          </span>
+        </td>
+        <td>
+          <button type="button" (click)="handleGoToEdit(product.id)">
+            Editar
+          </button>
+        </td>
+        <td>
+          <button type="button" (click)="handleDelete(product.id)">
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </table>
+  </ng-container>
+  <ng-template #loadingRef>
+    <span>Cargando...</span>
+  </ng-template>
+</ng-container>
